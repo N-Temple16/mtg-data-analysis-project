@@ -2,9 +2,9 @@ import json
 import pandas as pd
 
 # Loaded from AllPrintings.json file from mtgjson.com 
-"""with open("data/AllPrintings.json", "r", encoding="utf-8") as file:
+with open("data/AllPrintings.json", "r", encoding="utf-8") as file:
     printing_data = json.load(file)
-"""
+
 # Loaded from AllPrices.json file from mtgjson.com
 with open("data/AllPrices.json", "r", encoding="utf-8") as file:
     prices_data = json.load(file)
@@ -13,7 +13,7 @@ with open("data/AllPrices.json", "r", encoding="utf-8") as file:
 cards_list = []
 prices_list = []
 
-"""for _, set_data in printing_data["data"].items():
+for _, set_data in printing_data["data"].items():
     if "cards" in set_data:
         for card in set_data["cards"]:
             cards_list.append({
@@ -27,10 +27,8 @@ prices_list = []
                 "colours": card["colors"]
             })
 
-cards_df = pd.DataFrame(cards_list)"""
+cards_df = pd.DataFrame(cards_list)
 
-#first_uuid = list(prices_data["data"].keys())[2]
-printing_details = {}
 
 for id in prices_data["data"].keys():
     uuid_data = prices_data["data"][id]
@@ -39,11 +37,20 @@ for id in prices_data["data"].keys():
         if "tcgplayer" in paper_data:
             tcgplayer_data = paper_data["tcgplayer"]
             if "retail" in tcgplayer_data:
-                for printing_type in tcgplayer_data["retail"].keys():
-                    if printing_type not in printing_details:
-                        printing_details[printing_type] = 0
-                    printing_details[printing_type] += 1
-        
-print(printing_details)
-#print(prices_data["data"][first_uuid]["paper"]["tcgplayer"]["retail"].keys())
-#print(prices_data["data"][first_uuid]["paper"]["tcgplayer"]["retail"]["normal"])
+                if "normal" in tcgplayer_data["retail"]:
+                    normal_prices = tcgplayer_data["retail"]["normal"]
+                    latest_date = max(normal_prices.keys())
+                    prices_list.append({
+                        "uuid": id,
+                        "price": normal_prices[latest_date],
+                        "price_date": latest_date
+                    })
+
+prices_df = pd.DataFrame(prices_list)
+
+result_df = pd.merge(cards_df, prices_df, on="uuid", how="inner")
+
+#missing_uuids = set(prices_df["uuid"]) - set(cards_df["uuid"])
+
+pd.set_option("display.max_columns", None)
+print(result_df.head())
