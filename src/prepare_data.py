@@ -9,7 +9,6 @@ with open("data/AllPrintings.json", "r", encoding="utf-8") as file:
 with open("data/AllPrices.json", "r", encoding="utf-8") as file:
     prices_data = json.load(file)
 
-
 cards_list = []
 prices_list = []
 
