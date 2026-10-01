@@ -12,6 +12,7 @@ with open("data/AllPrices.json", "r", encoding="utf-8") as file:
 cards_list = []
 prices_list = []
 
+
 for _, set_data in printing_data["data"].items():
     if "cards" in set_data:
         for card in set_data["cards"]:
@@ -19,7 +20,8 @@ for _, set_data in printing_data["data"].items():
                 cards_list.append({
                     "uuid": card["uuid"],
                     "name": card["name"],
-                    "set": card["setCode"],
+                    "set_code": card["setCode"],
+                    "set_name": set_data["name"],
                     "rarity": card["rarity"],
                     "mana_value": card["manaValue"],
                     "card_text": card.get("text", "N/A"),
