@@ -1,1 +1,3 @@
-data/*.json
+data/AllPrintings.json
+data/AllPrices.json
+data/mtg_analysis.csv
