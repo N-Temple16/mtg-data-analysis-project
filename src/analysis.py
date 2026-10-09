@@ -6,11 +6,43 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 result_df = pd.read_csv("data/mtg_analysis.csv")
 
-result_df["keywords"] = result_df["keywords"].apply(ast.literal_eval)
-result_df = result_df[result_df["rarity"] != "special"]
-
 pd.set_option("display.max_columns", None)
-#print(result_df.head(6))
+
+#result_df["keywords"] = result_df["keywords"].apply(ast.literal_eval)
+
+colour_map = {
+    "W": "White",
+    "U": "Blue",
+    "B": "Black",
+    "R": "Red",
+    "G": "Green"
+}
+
+def transform_colour(colour_list):
+    colours = sorted(colour_list)
+
+    if colours == []:
+        return "Colourless"
+
+    colour_names = []
+    for letter in colours:
+        if letter in colour_map:
+            colour_names.append(colour_map[letter])
+
+    return ", ".join(colour_names)
+
+
+def clean_data(result_df):
+    result_df = result_df[result_df["rarity"] != "special"]
+
+    result_df["colour_names"] = result_df["colours"].apply(transform_colour)
+
+    result_df["colours"] = result_df["colours"].apply(
+        lambda colours: str(sorted(colours))
+    )
+
+    return result_df
+
 
 expensive_cards = result_df[result_df["price"] >= 50]
 
@@ -94,10 +126,6 @@ higher_tier_mana_values = expensive_cards.groupby("mana_value")["price"].agg(
 
 
 # Analyze Colours vs Price
-result_df["colours"] = result_df["colours"].apply(
-    lambda colours: str(sorted(ast.literal_eval(colours)))
-)
-
 all_colours = result_df.groupby("colours")["price"].agg(
     count="count", 
     median="median", 
@@ -203,8 +231,8 @@ all_sets = result_df.groupby("set_code")["price"].agg(
     mean="mean", 
     max="max",
 )
-print(all_sets.sort_values(by="mean", ascending=False))
-print()
+#print(all_sets.sort_values(by="mean", ascending=False))
+#print()
 
 
 higher_tier_sets = expensive_cards.groupby("set_code")["price"].agg(
@@ -213,7 +241,7 @@ higher_tier_sets = expensive_cards.groupby("set_code")["price"].agg(
     mean="mean", 
     max="max",
 )
-print(higher_tier_sets.sort_values(by="mean", ascending=False))
+#print(higher_tier_sets.sort_values(by="mean", ascending=False))
 #print()
 
 

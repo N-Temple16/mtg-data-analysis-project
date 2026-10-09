@@ -13,7 +13,6 @@ def prepare_data():
     cards_list = []
     prices_list = []
 
-
     for _, set_data in printing_data["data"].items():
         if "cards" in set_data:
             for card in set_data["cards"]:
@@ -25,6 +24,7 @@ def prepare_data():
                         "set_name": set_data["name"],
                         "rarity": card["rarity"],
                         "mana_value": card["manaValue"],
+                        "types": card["types"],
                         "card_text": card.get("text", "N/A"),
                         "keywords": card.get("keywords", []),
                         "colours": card["colors"],
