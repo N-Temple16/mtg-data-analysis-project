@@ -19,6 +19,6 @@ I chose this threshold because $50 represents a meaningful amount of money for a
 
 ## How to Access the Analysis
 
-## Findinds
+## Findings
 
 ## Conclusion
