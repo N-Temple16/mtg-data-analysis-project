@@ -15,12 +15,13 @@ def main():
     result_df = prepare_data()
 
     print("Filtering and organizing data.")
+    result_df = result_df[result_df["rarity"] != "special"]
     result_df = clean_data(result_df)
 
     generate_csv(result_df)
     generate_keyword_csv(result_df)
 
-    print("Power BI data is now ready!")
+    print("CSV data is now ready for Power BI!")
 
 if __name__ == "__main__":
     main()

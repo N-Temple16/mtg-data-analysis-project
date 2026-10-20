@@ -32,14 +32,24 @@ def transform_colour(colour_list):
     return ", ".join(colour_names)
 
 
-def clean_data(result_df):
-    result_df = result_df[result_df["rarity"] != "special"]
+def categorize_keywords(row):
+    if len(row["keywords"]) > 0:
+        return "Has keywords"
 
+    if row["card_text"] != "N/A":
+        return "Rules text, no keywords"
+
+    return "No keywords, no rules text"
+
+
+def clean_data(result_df):
     result_df["colour_names"] = result_df["colours"].apply(transform_colour)
 
     result_df["colours"] = result_df["colours"].apply(
         lambda colours: str(sorted(colours))
     )
+
+    result_df["keyword_category"] = result_df.apply(categorize_keywords, axis=1)
 
     return result_df
 
