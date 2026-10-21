@@ -28,15 +28,12 @@ To process and prepare the data, a mix of Python and pandas was used to extract 
 
 The detailed preparation process:
 1. Loaded the JSON data and first extracted the characteristics I would be examining from the printing data which includes the aforementioned topics (rarity, mana value, colour, etc.)
-2. Following that with extracting the price data and specifically looking at the TCGplayer, retail, normal pricing of cards as well as the most recent price snapshot at the time of this step
+2. Following that was extracting the price data and specifically looking at the TCGplayer, retail, normal pricing of cards as well as the most recent price snapshot at the time of this step
 3. Formatting both as pandas DataFrames and merging them into one total dataset
 4. Quick analysis of the dataset to make sure all values appear as they should as well as some clean up to prepare tables for use in Power BI
 5. Generating and exporting the resulting main dataset along with a helper keyword dataset for improved examination to CSV for analysis in Power BI
 
 The final dataset contains one row per printing with a matching price record.
-
-## How to Access the Analysis
-
 
 ## Key Findings
 
