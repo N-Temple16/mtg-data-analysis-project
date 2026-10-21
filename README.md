@@ -1,7 +1,7 @@
 # Magic: The Gathering Characteristic/Price Analysis Overview
 This analysis has been conducted to determine what characteristics are associated with expensive Magic: The Gathering cards. This project used a culmination of Python, pandas, MTGJSON data, and Power BI to investigate this question more in depth.
 
-add a picture of the dashboard here**
+![Dashboard Screenshot](images/dashboard.png)
 
 ## What Characteristics Were Taken into Account?
 There are potentially hundreds of characteristics that could be examined to determine the price of a card. From the finish on the card (foil/non-foil), the playablitily in different formats, or the tens of details related to each card such as the artist, release date, promotional only, etc. For this analysis I chose to look at card details as I felt like it was the most reliable way of determining the price of a card. More specifically I chose to look into these characteristics:
