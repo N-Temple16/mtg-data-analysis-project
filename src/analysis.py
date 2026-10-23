@@ -3,12 +3,8 @@ import sys
 import pandas as pd
 
 sys.stdout.reconfigure(encoding="utf-8")
-
 result_df = pd.read_csv("data/mtg_analysis.csv")
-
 pd.set_option("display.max_columns", None)
-
-#result_df["keywords"] = result_df["keywords"].apply(ast.literal_eval)
 
 colour_map = {
     "W": "White",
