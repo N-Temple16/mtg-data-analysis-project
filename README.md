@@ -14,6 +14,8 @@ There are potentially hundreds of characteristics that could be examined to dete
 
 For a more fair examination, I restricted the primary analysis to printings with a non-foil version. This was done to reduce the influence of premium finishes such as foil and etched foil variations, which can command substantially greater prices for otherwise indentical card designs. Premium finishes were treated as a separate potential factor rather than mixed into the primary price analysis.
 
+![Example Magic Card to Demonstrate Characteristics](images/example_magic_card.png)
+
 ## Defining an Expensive Card
 The term "expensive" is inherently extremely subjective. For one individual, $5 may be considered expensive whereas another individual may frequently purchase cards worth hundreds of dollars without thinking twice. For the purposes of this project, I defined an expensive Magic: The Gathering card as a printing with a TCGplayer normal price of $50 USD or more. The price snapshots used in this analysis were taken on September 24, 2026 for a majority of the printings and earlier dates for cards that are sold more scarcely.
 
