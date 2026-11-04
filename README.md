@@ -1,5 +1,5 @@
 # Magic: The Gathering Characteristic/Price Analysis Overview
-This analysis has been conducted to determine what characteristics are associated with expensive Magic: The Gathering cards. This project used a culmination of Python, pandas, MTGJSON data, and Power BI to investigate this question more in depth. If you are looking to access this analysis, a secondary README file has been added to the ```data/``` directory with instructions on how to proceed.
+This analysis has been conducted to determine what characteristics are associated with expensive Magic: The Gathering cards. This project used a culmination of Python, pandas, MTGJSON data, and Power BI to investigate this question more in depth. ```If you are looking to access this analysis, a secondary README file has been added to the data/ directory with instructions on how to proceed.```
 
 ![Dashboard Screenshot](images/dashboard.png)
 
